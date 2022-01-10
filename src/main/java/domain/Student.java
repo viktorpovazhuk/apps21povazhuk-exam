@@ -21,18 +21,18 @@ public class Student extends BasicStudent {
     public JsonObject toJsonObject() {
         JsonObject jsonObject = super.toJsonObject();
 
-        List<Json> courses = new ArrayList<>();
-        for (Tuple<String, Integer> examInfo: exams) {
+        List<Json> exams = new ArrayList<>();
+        for (Tuple<String, Integer> examInfo: this.exams) {
             JsonPair subject = new JsonPair("course", new JsonString(examInfo.key));
             JsonPair mark = new JsonPair("mark", new JsonNumber(examInfo.value));
             JsonPair passed = new JsonPair("passed", new JsonBoolean(examInfo.value > 2));
-            JsonObject course = new JsonObject(subject, mark, passed);
-            courses.add(course);
+            JsonObject exam = new JsonObject(subject, mark, passed);
+            exams.add(exam);
         }
-        Json[] coursesArr = courses.toArray(new Json[0]);
-        JsonArray jsonCourses = new JsonArray(coursesArr);
+        Json[] examsArr = exams.toArray(new Json[0]);
+        JsonArray jsonExams = new JsonArray(examsArr);
 
-        jsonObject.add(new JsonPair("exams", jsonCourses));
+        jsonObject.add(new JsonPair("exams", jsonExams));
 
         return jsonObject;
     }

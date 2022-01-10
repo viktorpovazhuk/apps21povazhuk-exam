@@ -35,7 +35,11 @@ public class JSONApp {
     public static JsonObject sessionResult() {
 
         JsonObject jsonObject = null;
-        // ToDo
+        JsonPair name = new JsonPair("name", new JsonString("Andrii"));
+        JsonPair surname = new JsonPair("surname", new JsonString("Rodionov"));
+//        JsonPair year = new JsonPair("year", jYear);
+
+
         return jsonObject;
     }
 }

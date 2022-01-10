@@ -48,16 +48,21 @@ public class JsonObject extends Json {
     }
 
     public void add(JsonPair jsonPair) {
-        // ToDo
+        jsonFields.put(jsonPair.key, jsonPair.value);
     }
 
     public Json find(String name) {
-        // ToDo
-        return null;
+        return jsonFields.get(name);
     }
 
     public JsonObject projection(String... names) {
-        // ToDo
-        return null;
+        JsonObject newObject = new JsonObject();
+        for (String key: names) {
+            Json value = find(key);
+            if (!Objects.isNull(value)) {
+                newObject.add(new JsonPair(key, value));
+            }
+        }
+        return newObject;
     }
 }
